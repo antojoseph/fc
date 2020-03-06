@@ -1,6 +1,4 @@
-# Requirements
-----------------
-#Minikube Cluster
+# Requirements - Minikube Cluster
 -----------------
 #afl-master (1) is a deployment - single instance 
 #afl-slave ( n ) is a deployment that you can scale using kubectl scale --replicas=3 rs/foo 
