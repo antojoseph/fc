@@ -46,8 +46,7 @@ $ change your ceph configuration to multi-node for resilience
 
 License
 ----
-
-MIT
+Apache License 2.0
 
 
 **Free Software, Hell Yeah!**
