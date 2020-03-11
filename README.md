@@ -25,12 +25,49 @@ FuzzCube uses a number of open source projects to work properly:
 * [elastic] - Visibility for k8s.
 
 And of course FuzzCube itself is open source with a public repository on GitHub.
+### Test Cluster using minikube
+FuzzCube requires a working k8s cluster to run.
+Install minikube and deploy the yaml spec to start fuzzing.
+```sh
+#install minikube
+$brew install minikube
+#or to update your existing installation
+$brew update
+$brew upgrade minikube
 
+#deploy a k8s cluster with 4 cpu , 8gigs of memory , 20 gigs of storage and log startup to console
+$minikube -p clustername start --cpus=4 --memory=8192 --disk-size 20GB --alsologtostderr -v=7
+
+# deploy dashboard for a neat UI to see everything in your cluster
+$minikube dashboard -p clustername
+
+#deploy metrics-server required by k8s to measure performance
+$minikube addons -p clustername metrics-server
+
+# to view resource utilization in the cluster
+$kubectl top pod --all-namespaces | sort --reverse --key 3 --numeric 
+
+#to check what cluster you are working with 
+$kubectl config get-contexts
+
+# create resources from a yaml spec
+$kubectl create -f spellbook.yaml
+
+# get all pods in the cluster ( all -namespaces )
+$kubectl get pods -A
+
+# get a shell inside a pod inside the cluster (for debugging ) ( get the pod name using kubectl get pods -A )
+$kubectl exec -it podnamehere /bin/bash
+
+# expose a service to your host system instantly for testing ( like kibana / web apps ? )
+$kubectl portforward svc/name-of-service port:port
+
+# to stop the cluster
+$minikube -p clustername stop
+```
 ### Installation
 
-FuzzCube requires a working k8s cluster to run.
-
-Install minikube and deploy the yaml spec to start fuzzing.
+to deploy the fuzzer , have kubectl configured to use the cluster of choice . If you follow the above steps , this will be done for you!
 
 ```sh
 $ git clone https://github.com/antojoseph/fc
