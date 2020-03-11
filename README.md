@@ -1,4 +1,4 @@
-![](https://raw.githubusercontent.com/antojoseph/fc/master/resources/k8s.png)
+![](https://raw.githubusercontent.com/antojoseph/fc/master/resources/logo.png)
 
 [![place-holder](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](palce-holder)
 
