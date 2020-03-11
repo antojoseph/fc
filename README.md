@@ -19,7 +19,8 @@ Distributed fuzzing with k8s and afl using ceph for state sharing , elk stack fo
 
 FuzzCube uses a number of open source projects to work properly:
 
-* [ k8s ] - Container Orchestration!
+* [afl] - Fuzzer of Choice
+* [k8s] - Container Orchestration!
 * [ceph] - Distributed Object Storage
 * [elastic] - Visibility for k8s.
 
@@ -50,5 +51,7 @@ Apache License 2.0
 
 
 **Free Software, Hell Yeah!**
-
-[ k8s ]: <https://github.com/kubernetes/kubernetes> 
+[afl]: <https://github.com/google/AFL>
+[k8s]: <https://github.com/kubernetes/kubernetes> 
+[ceph]: <https://github.com/ceph/ceph>
+[elastic]: <https://github.com/elastic>
