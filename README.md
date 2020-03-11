@@ -74,18 +74,24 @@ $ change your ceph configuration to multi-node for resilience
 ```
 
 
-License
-----
-Apache License 2.0
 
 ### Youtube Demo
 
 [![Distributed Fuzzing with kubernetes and AFL](http://img.youtube.com/vi/FMOBS3a4Tnk/0.jpg)](http://www.youtube.com/watch?v=FMOBS3a4Tnk "Distributed Fuzzing with kubernetes and AFL")
 
+### Credits
+
+* [saadrana219] - for sharing  your wisdom 
+
+License
+----
+Apache License 2.0
 
 **Free Software, Hell Yeah!**
+
 
 [afl]: <https://github.com/google/AFL>
 [k8s]: <https://github.com/kubernetes/kubernetes> 
 [ceph]: <https://github.com/ceph/ceph>
 [elastic]: <https://github.com/elastic>
+[saadrana219]: <https://github.com/saadrana219>
