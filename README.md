@@ -50,20 +50,12 @@ $kubectl top pod --all-namespaces | sort --reverse --key 3 --numeric
 #to check what cluster you are working with 
 $kubectl config get-contexts
 
-# create resources from a yaml spec
-$kubectl create -f spellbook.yaml
-
 # get all pods in the cluster ( all -namespaces )
 $kubectl get pods -A
 
 # get a shell inside a pod inside the cluster (for debugging ) ( get the pod name using kubectl get pods -A )
 $kubectl exec -it podnamehere /bin/bash
 
-# expose a service to your host system instantly for testing ( like kibana / web apps ? )
-$kubectl portforward svc/name-of-service port:port
-
-# to stop the cluster
-$minikube -p clustername stop
 ```
 ### Installation
 
