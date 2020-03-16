@@ -2,7 +2,7 @@
 
 [![place-holder](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](palce-holder)
 
-Distributed fuzzing with k8s and afl using ceph for state sharing , elk stack for monitoring!
+Distributed fuzzing infrastructure with k8s, ceph for state sharing and elk stack for monitoring!
 
   - scale your fuzzing workloads
   - resilient sate sharing using ceph 
@@ -24,7 +24,7 @@ Distributed fuzzing with k8s and afl using ceph for state sharing , elk stack fo
 
 ### Tech
 
-FuzzCube uses a number of open source projects to work properly:
+FuzzCube uses a number of open source projects:
 
 * [afl] - Fuzzer of Choice
 * [k8s] - Container Orchestration!
