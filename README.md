@@ -8,10 +8,17 @@ Distributed fuzzing with k8s and afl using ceph for state sharing , elk stack fo
   - resilient sate sharing using ceph 
   - cluster performace monitoring with elastic,metric-beats and kibana
 
-# Planned Features!
 
+# To-Do 
+  - Squash Container Image
+
+
+# Planned Features!
+  - Support libFuzzer
   - Support afl++
   - Helm Charts to make deployment easier 
+  - CI/CD system for continous fuzzing 
+  
 
 
 
