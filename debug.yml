@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: debug-deployment
+  labels:
+    k8s-app: debug
+    kubernetes.io/cluster-service: "true"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: debug
+  template:
+    metadata:
+      labels:
+        k8s-app: debug
+        kubernetes.io/cluster-service: "true"
+    spec:
+      containers:
+      - name: debug
+        image: ubuntu:xenial
+        command: [ "/bin/bash", "-c", "--" ]
+        args: [ "while true; do sleep 30; done;" ]   
+        securityContext:
+          privileged: true
+
+        volumeMounts: 
+        - mountPath: "/sync_dir"
+          name: image-store
+      volumes:
+      - name: image-store
+        persistentVolumeClaim:
+          claimName: cephfs-pvc
+          readOnly: false
