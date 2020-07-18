@@ -14,7 +14,6 @@ Distributed fuzzing infrastructure with k8s, ceph for state sharing and elk stac
 
 
 # Planned Features!
-  - Support libFuzzer
   - Support afl++
   - Helm Charts to make deployment easier 
   - CI/CD system for continous fuzzing 
@@ -26,12 +25,14 @@ Distributed fuzzing infrastructure with k8s, ceph for state sharing and elk stac
 
 FuzzCube uses a number of open source projects:
 
-* [afl] - Fuzzer of Choice
+* [afl] - the mighty afl
+* [libFuzzer] - powerful in-process fuzzing
 * [k8s] - Container Orchestration!
 * [ceph] - Distributed Object Storage
 * [elastic] - Visibility for k8s.
 
 And of course FuzzCube itself is open source with a public repository on GitHub.
+
 ### Test Cluster using minikube
 FuzzCube requires a working k8s cluster to run.
 Install minikube and deploy the yaml spec to start fuzzing.
@@ -72,6 +73,9 @@ to deploy the fuzzer , have kubectl configured to use the cluster of choice . If
 $ git clone https://github.com/antojoseph/fc
 $ cd fc
 $ kubectl apply -f spellbook.yaml
+$ kubectl apply -f afl.yml
+$ kubectl apply -f libfuzzer.yml
+$ kubectl apply -f debug.yml
 ```
 
 For production environments...
@@ -98,6 +102,7 @@ Apache License 2.0
 
 
 [afl]: <https://github.com/google/AFL>
+[libfuzzer]: <https://llvm.org/docs/libFuzzer.html>
 [k8s]: <https://github.com/kubernetes/kubernetes> 
 [ceph]: <https://github.com/ceph/ceph>
 [elastic]: <https://github.com/elastic>
