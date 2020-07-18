@@ -1,0 +1,82 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fm-deployment
+  labels:
+    k8s-app: fzz
+    kubernetes.io/cluster-service: "true"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: fzz
+  template:
+    metadata:
+      labels:
+        k8s-app: fzz
+        kubernetes.io/cluster-service: "true"
+    spec:
+      containers:
+      - name: fzzmaster
+        image: antojoseph/fuzz:latest
+        command: ['afl-fuzz'] 
+        args: ['-i', 'afl_in', '-o', 'sync_dir', '-M', '$(HOSTNAME)' ,'./binutils-2.34/binutils/readelf', '-a', '@@']
+        env:
+        - name: HOSTNAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        securityContext:
+          privileged: true
+
+        volumeMounts: 
+        - mountPath: "/sync_dir"
+          name: image-store
+      volumes:
+      - name: image-store
+        persistentVolumeClaim:
+          claimName: cephfs-pvc
+          readOnly: false
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fms-deployment
+  labels:
+    k8s-app: fslave
+    kubernetes.io/cluster-service: "true"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: fslave
+  template:
+    metadata:
+      labels:
+        k8s-app: fslave
+        kubernetes.io/cluster-service: "true"
+    spec:
+      containers:
+      - name: fzzslave
+        image: antojoseph/fuzz:latest
+        command: ['afl-fuzz'] 
+        args: ['-i', 'afl_in', '-o', 'sync_dir', '-S', '$(HOSTNAME)' ,'./binutils-2.34/binutils/readelf', '-a', '@@']
+        env:
+        - name: HOSTNAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        securityContext:
+          privileged: true
+
+        volumeMounts: 
+        - mountPath: "/sync_dir"
+          name: image-store
+      volumes:
+      - name: image-store
+        persistentVolumeClaim:
+          claimName: cephfs-pvc
+          readOnly: false
+---
