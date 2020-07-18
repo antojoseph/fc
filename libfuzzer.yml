@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: libfuzzer-deployment
+  labels:
+    k8s-app: debug
+    kubernetes.io/cluster-service: "true"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      k8s-app: debug
+  template:
+    metadata:
+      labels:
+        k8s-app: debug
+        kubernetes.io/cluster-service: "true"
+    spec:
+      containers:
+      - name: debug
+        image: antojoseph/libfuzzer:latest
+        command: ['/opt/libpng_read_fuzzer'] 
+        args: ['/sync_dir', '/opt/seed']
+        securityContext:
+          privileged: true
+
+        volumeMounts: 
+        - mountPath: "/sync_dir"
+          name: image-store
+      volumes:
+      - name: image-store
+        persistentVolumeClaim:
+          claimName: cephfs-pvc
+          readOnly: false
