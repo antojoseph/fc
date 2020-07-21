@@ -84,10 +84,12 @@ For production environments...
 $ change your ceph configuration to multi-node for resilience
 ```
 
-### Tips 
+### Debugging 
 
 Use hyperkit driver for minikube if you are running OSX
+
 ```$ minikube start --driver=hyperkit```
+
 
 ### Youtube Demo
 
