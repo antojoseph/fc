@@ -61,7 +61,7 @@ $kubectl config get-contexts
 # get all pods in the cluster ( all -namespaces )
 $kubectl get pods -A
 
-# get a shell inside a pod inside the cluster (for debugging ) ( get the pod name using kubectl get pods -A )
+# get a shell inside a pod inside the cluster (for debugging ) 
 $kubectl exec -it podnamehere /bin/bash
 
 ```
