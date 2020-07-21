@@ -19,9 +19,9 @@ spec:
     spec:
       containers:
       - name: fzzmaster
-        image: antojoseph/fuzz:latest
+        image: antojoseph/libfuzzer:latest
         command: ['afl-fuzz'] 
-        args: ['-i', 'afl_in', '-o', 'sync_dir', '-M', '$(HOSTNAME)' ,'./binutils-2.34/binutils/readelf', '-a', '@@']
+        args: ['-i', '/opt/seed', '-o', 'sync_dir', '-M', '$(HOSTNAME)' ,'/opt/aflpng/libpng/.libs/pngtest','@@']
         env:
         - name: HOSTNAME
           valueFrom:
@@ -60,9 +60,9 @@ spec:
     spec:
       containers:
       - name: fzzslave
-        image: antojoseph/fuzz:latest
+        image: antojoseph/libfuzzer:latest
         command: ['afl-fuzz'] 
-        args: ['-i', 'afl_in', '-o', 'sync_dir', '-S', '$(HOSTNAME)' ,'./binutils-2.34/binutils/readelf', '-a', '@@']
+        args: ['-i', '/opt/seed', '-o', 'sync_dir', '-S', '$(HOSTNAME)' ,'/opt/aflpng/libpng/.libs/pngtest','@@']
         env:
         - name: HOSTNAME
           valueFrom:
