@@ -88,7 +88,7 @@ $ change your ceph configuration to multi-node for resilience
 
 Use hyperkit driver for minikube if you are running OSX
 
-```$ minikube start --driver=hyperkit```
+```$ minikube start --driver=hyperkit --cpus=4 --memory=8192 --disk-size 20GB --alsologtostderr -v=7```
 
 
 ### Youtube Demo
