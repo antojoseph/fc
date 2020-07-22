@@ -93,7 +93,7 @@ Use hyperkit driver for minikube if you are running OSX
 
 ### Youtube Demo
 
-[![Distributed Fuzzing with kubernetes and AFL](http://img.youtube.com/vi/FMOBS3a4Tnk/0.jpg)](http://www.youtube.com/watch?v=FMOBS3a4Tnk "Distributed Fuzzing with kubernetes and AFL")
+[![Distributed Fuzzing with kubernetes and AFL](http://img.youtube.com/vi/FMOBS3a4Tnk/0.jpg)](https://youtu.be/DPsi7djs1d8 "Distributed Fuzzing with kubernetes")
 
 ### Credits
 
