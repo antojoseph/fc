@@ -15,7 +15,7 @@ Distributed fuzzing infrastructure with k8s, ceph for state sharing and elk stac
 
 # Planned Features!
   - Support afl++
-  - Helm Charts to make deployment easier 
+  - Support fuzzilli (docker)
   - CI/CD system for continous fuzzing 
   
 
